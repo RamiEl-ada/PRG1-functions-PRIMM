@@ -1,3 +1,20 @@
+import string
+
+def score_rating(score):
+    rating = "No Rating"
+    if score <= 2:
+        rating = "Weak Rating"
+    elif score == 3:
+        rating = "Medium Rating"
+    elif score <= 5:
+        rating = "Strong Rating"
+    return rating
+
+def check_string(password):
+    for pwd in password:
+        if pwd in string.punctuation:
+            return True 
+
 def check_password_strength(password):
     score = 0
     feedback = []
@@ -22,13 +39,20 @@ def check_password_strength(password):
     else:
         feedback.append("Password should contain numbers")
     
+    if check_string(password) == True:
+        score += 1
+    else:
+        feedback.append("Password should contain a Special Character")
+    
     return score, feedback
 
 # Test passwords
-passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!"]
+passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!", "hello!"]
 for pwd in passwords:
     score, issues = check_password_strength(pwd)
-    print(f"'{pwd}': Score {score}/4")
+    rating = score_rating(score)
+    print(f"'{pwd}': Score {score}/5", "You got a", rating)
     for issue in issues:
         print(f"  - {issue}")
     print()
+
