@@ -1,35 +1,6 @@
 import random
 import string
 
-def random_password_generator(length):
-
-    random_password = ""
-    upper_condition = False
-    lower_condition = False
-    number_condition = False
-    special_condition = False
-    numbers = [1,2,3,4,5,6,7,8,9,0]
-    characters = (string.ascii_lowercase + string.ascii_uppercase + string.punctuation
-                  + numbers)
-    
-    
-    while (upper_condition is False or lower_condition is False
-            or number_condition is False or special_condition is False):
-        random_password = "".join(random.choice(characters)
-                              for random_password in range(8))
-        
-        if (random_password.isupper()):
-             upper_condition = True
-        if (random_password.islower()):
-             lower_condition = True
-        if (random_password.isdigit()):
-            number_condition = True
-        if check_string(random_password) == True: 
-             special_condition = True
-        print(upper_condition, lower_condition, number_condition, special_condition)
-             
-    return random_password
-
 def score_rating(score):
     rating = "No Rating"
     if score <= 2:
@@ -68,23 +39,28 @@ def check_password_strength(password):
         score += 1
     else:
         feedback.append("Password should contain numbers")
-    
     if check_string(password) == True:
         score += 1
     else:
         feedback.append("Password should contain a Special Character")
-    
     return score, feedback
 
+def random_password_generator():
+    random_password = ""
+    letters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+    special_characters = string.punctuation
+    numbers = "1234567890"
+    all_chars = numbers + special_characters + letters
+    random_password += random.choice(letters[:25]) + random.choice(letters[25:]) + random.choice(numbers) + random.choice(special_characters)
+    for i in range(4):
+        random_password += random.choice(all_chars)
+    return random_password
 # Test passwords
-
-passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!", "hello!"
-             , random_password_generator(8)]
+random_password = random_password_generator()
+passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!", "hello!", random_password]
 for pwd in passwords:
     score, issues = check_password_strength(pwd)
     rating = score_rating(score)
     print(f"'{pwd}': Score {score}/5", "You got a", rating)
     for issue in issues:
         print(f"  - {issue}")
-    print()
-
