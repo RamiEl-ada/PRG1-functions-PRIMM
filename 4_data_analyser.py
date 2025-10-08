@@ -28,11 +28,12 @@ def analyse_scores(scores):
             grade_counts["F"] += 1
     
     return {
-        "Percentage of A's," : (grade_counts["A"]/number_of_scores)*100,
-        "Percentage of B's," : (grade_counts["B"]/number_of_scores)*100,
-        "Percentage of C's," : (grade_counts["C"]/number_of_scores)*100,
-        "Percentage of D's," : (grade_counts["D"]/number_of_scores)*100,
-        "Percentage of F's," : (grade_counts["F"]/number_of_scores)*100,
+        "Percentage of A's," : f'{(grade_counts["A"]/number_of_scores)*100}%',
+        "Percentage of B's," : f"{(grade_counts["B"]/number_of_scores)*100}%",
+        "Percentage of C's," : f"{(grade_counts["C"]/number_of_scores)*100}%",
+        "Percentage of D's," : f"{(grade_counts["D"]/number_of_scores)*100}%",
+        "Percentage of F's," : f"{(grade_counts["F"]/number_of_scores)*100}%",
+        "Passing Rate:," : f"{(((grade_counts["A"]+grade_counts["B"]+grade_counts["C"]+grade_counts["D"])/number_of_scores)*100)}%",
         "Median" : the_median,
         "Average": round(average, 2),
         "Highest": highest,
