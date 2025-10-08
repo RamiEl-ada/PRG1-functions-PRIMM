@@ -1,4 +1,34 @@
+import random
 import string
+
+def random_password_generator(length):
+
+    random_password = ""
+    upper_condition = False
+    lower_condition = False
+    number_condition = False
+    special_condition = False
+    numbers = [1,2,3,4,5,6,7,8,9,0]
+    characters = (string.ascii_lowercase + string.ascii_uppercase + string.punctuation
+                  + numbers)
+    
+    
+    while (upper_condition is False or lower_condition is False
+            or number_condition is False or special_condition is False):
+        random_password = "".join(random.choice(characters)
+                              for random_password in range(8))
+        
+        if (random_password.isupper()):
+             upper_condition = True
+        if (random_password.islower()):
+             lower_condition = True
+        if (random_password.isdigit()):
+            number_condition = True
+        if check_string(random_password) == True: 
+             special_condition = True
+        print(upper_condition, lower_condition, number_condition, special_condition)
+             
+    return random_password
 
 def score_rating(score):
     rating = "No Rating"
@@ -47,7 +77,9 @@ def check_password_strength(password):
     return score, feedback
 
 # Test passwords
-passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!", "hello!"]
+
+passwords = ["hello", "Hello123", "PASSWORD", "MyPass123!", "hello!"
+             , random_password_generator(8)]
 for pwd in passwords:
     score, issues = check_password_strength(pwd)
     rating = score_rating(score)

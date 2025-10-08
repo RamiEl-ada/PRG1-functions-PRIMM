@@ -65,5 +65,8 @@ Run)
 Investigate)
     1) any() checks all of the characters in the string for a certain conditon that can be specified by the coder, in this case it is to check for any upper or lower case words and any digits so that it can be scored appropriately 
     2) for .isupper(), .islower(), isdigit(), check for upper case, lower case and digits respectively and if there is one present, it will return a True output
-    
+
+Modify) code has been updated to include rating system and a check for special characters
+
+make) 
 
