@@ -1,7 +1,13 @@
+from statistics import median
+
+
 def analyse_scores(scores):
     if not scores:
         return {"error": "No scores provided"}
     
+    number_of_scores = len(scores)
+    #percentage = 
+    the_median = median(scores)
     total = sum(scores)
     average = total / len(scores)
     highest = max(scores)
@@ -22,11 +28,17 @@ def analyse_scores(scores):
             grade_counts["F"] += 1
     
     return {
-        "average": round(average, 2),
-        "highest": highest,
-        "lowest": lowest,
-        "total_students": len(scores),
-        "grade_distribution": grade_counts
+        "Percentage of A's," : (grade_counts["A"]/number_of_scores)*100,
+        "Percentage of B's," : (grade_counts["B"]/number_of_scores)*100,
+        "Percentage of C's," : (grade_counts["C"]/number_of_scores)*100,
+        "Percentage of D's," : (grade_counts["D"]/number_of_scores)*100,
+        "Percentage of F's," : (grade_counts["F"]/number_of_scores)*100,
+        "Median" : the_median,
+        "Average": round(average, 2),
+        "Highest": highest,
+        "Lowest": lowest,
+        "Total Students": len(scores),
+        "Grade Distribution": grade_counts
     }
 
 # Test data

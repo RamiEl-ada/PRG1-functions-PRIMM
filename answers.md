@@ -68,5 +68,14 @@ Investigate)
 
 Modify) code has been updated to include rating system and a check for special characters
 
-make) 
+make) never again
 
+Activity 4:
+
+Predict) No grades below a C are handed out with the "test_scores" data list with a highest, lowest, an average and other pieces of data being printed with the list. and with the empty list, it will just print our the results with all the values being 0
+
+run)i was wrong on what the empty list printed, it returned an error due to lack of data
+
+investigate) if not scores acts as a safety net so that if erronous data enters the fucntion, there is a fallback instead of the program breaking.
+
+modify)
